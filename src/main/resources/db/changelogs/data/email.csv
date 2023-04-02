@@ -1,0 +1,5 @@
+email,is_verified
+admin@admin.com,true
+user1@mail.com,true
+user2@mail.com,false
+user3@mail.com,false

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-data-to-attribute_names-table
+      author: Vadzim.Nekhviadovich
+      loadUpdateData:
+        relativeToChangelogFile: true
+        encoding: UTF-8
+        file: ../data/attribute_names.csv
+        onlyUpdate: false
+        primaryKey: id
+
+        separator: ","
+        tableName: attribute_names

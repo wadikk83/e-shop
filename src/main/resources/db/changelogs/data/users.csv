@@ -1,0 +1,3 @@
+username,password,firstname,lastname,email,enabled
+admin,admin,Иван,Иванов,admin@mail.ru,true
+manager,manager,Петр,Миронов,manager@mail.ru,true

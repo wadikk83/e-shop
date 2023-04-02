@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-product_attributes-table
+      author: Vadzim.Nekhviadovich
+      changes:
+        - createTable:
+            tableName: product_attributes
+            columns:
+              - column:
+                  name: product_id
+                  type: bigint
+              - column:
+                  name: attribute_name_id
+                  type: bigint
+        - addPrimaryKey:
+            columnNames: product_id,attribute_name_id
+            constraintName: pk_product_attributes
+            tableName: product_attributes
+
+
+

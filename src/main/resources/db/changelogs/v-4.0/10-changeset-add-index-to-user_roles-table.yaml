@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id:  add-index-to-user_roles-table
+    author:  Vadzim.Nekhviadovich
+    changes:
+        - createIndex:
+            tableName:  user_roles
+            columns:
+                - column:
+                    name:  user_id
+        - createIndex:
+            tableName:  user_roles
+            columns:
+                - column:
+                    name:  role_id

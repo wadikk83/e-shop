@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-data-to-users-table
+      author: Vadzim.Nekhviadovich
+      loadUpdateData:
+        relativeToChangelogFile: false
+        encoding: UTF-8
+        file: db/changelogs/data/users.csv
+        onlyUpdate: false
+        primaryKey: id
+        quotchar: "'"
+        separator: ","
+        tableName: users
+
+
+

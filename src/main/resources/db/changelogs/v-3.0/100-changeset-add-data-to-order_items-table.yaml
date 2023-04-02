@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-data-to-order_items-table
+      author: Vadzim.Nekhviadovich
+      loadUpdateData:
+        relativeToChangelogFile: true
+        encoding: UTF-8
+        file: ../data/order_items.csv
+        onlyUpdate: false
+        primaryKey: id
+        quotchar: "'"
+        separator: ","
+        tableName: order_items

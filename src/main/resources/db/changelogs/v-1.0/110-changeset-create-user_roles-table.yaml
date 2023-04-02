@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users_roles-table
+      author: Vadzim.Nekhviadovich
+      changes:
+        - createTable:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+              - column:
+                  name: role_id
+                  type: bigint
+        - addPrimaryKey:
+            columnNames: user_id,role_id
+            constraintName: pk_user_role
+            tableName: users_roles

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-data-to-categories-table
+      author: Vadzim.Nekhviadovich
+      loadUpdateData:
+        relativeToChangelogFile: true
+        encoding: UTF-8
+        file: ../data/categories.csv
+        onlyUpdate: false
+        primaryKey: id
+        quotchar: "'"
+        separator: ","
+        tableName: categories

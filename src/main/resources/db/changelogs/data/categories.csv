@@ -1,0 +1,5 @@
+name,parent_id,created,updated
+parent,null,2022-01-01,2022-01-01
+category1-1,1,2022-01-02,2022-01-02
+category1-2,1,2022-01-03,2022-01-03
+category2-1,2,2022-01-04,2022-01-04

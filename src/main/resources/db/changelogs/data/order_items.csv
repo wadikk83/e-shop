@@ -1,0 +1,6 @@
+order_id,product_id,amount,product_price
+1,1,10,20
+1,2,20,40
+1,4,5,5
+2,3,5,5
+3,1,4,4

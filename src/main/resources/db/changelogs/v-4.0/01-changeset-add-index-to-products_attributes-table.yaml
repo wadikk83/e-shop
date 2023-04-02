@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id:  add-index-to-products_attributes-table
+    author:  Vadzim.Nekhviadovich
+    changes:
+        - createIndex:
+            tableName:  product_attributes
+            columns:
+                - column:
+                    name:  product_id
+        - createIndex:
+            tableName:  product_attributes
+            columns:
+                - column:
+                    name:  attribute_name_id

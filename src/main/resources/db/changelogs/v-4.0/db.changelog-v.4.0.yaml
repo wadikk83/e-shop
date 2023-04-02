@@ -1,0 +1,16 @@
+databaseChangeLog:
+#- include:
+#      file: 01-changeset-add-index-to-products_attributes-table.yaml
+#      relativeToChangelogFile: true
+#- include:
+#      file: 10-changeset-add-index-to-user_roles-table.yaml
+#      relativeToChangelogFile: true
+#- include:
+#      file: 20-changeset-add-index-to-product_categories-table.yaml
+#      relativeToChangelogFile: true
+#- include:
+#      file: 30-changeset-add-index-to-order_items-table.yaml
+#     relativeToChangelogFile: true
+#  - include:
+#        file: 40-changeset-add-index-to-orders-table.yaml
+#        relativeToChangelogFile: true

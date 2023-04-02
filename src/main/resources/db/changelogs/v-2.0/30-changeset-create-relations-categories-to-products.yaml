@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-categories-to-products
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: prod_id
+            baseTableName: product_categories
+            constraintName:  fk_product-categories_products
+            onDelete:  CASCADE
+            referencedColumnNames:  id
+            referencedTableName:  products
+
+        - addForeignKeyConstraint:
+            baseColumnNames: cat_id
+            baseTableName: product_categories
+            constraintName: fk_product-categories_categories
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: categories

@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-product_attributes-to-products
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: product_attributes
+            constraintName:  fk_product-attributes_products
+            onDelete:  CASCADE
+            referencedColumnNames:  id
+            referencedTableName:  products

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-data-to-products-table
+      author: Vadzim.Nekhviadovich
+      loadUpdateData:
+        relativeToChangelogFile: true
+        encoding: UTF-8
+        file: ../data/products.csv
+        onlyUpdate: false
+        primaryKey: id
+        quotchar: "'"
+        separator: ","
+        tableName: products

@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-users-to-emails
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: email_id
+            baseTableName: users
+            constraintName:  fk_user_email
+            onDelete:  CASCADE
+            referencedColumnNames:  id
+            referencedTableName:  emails

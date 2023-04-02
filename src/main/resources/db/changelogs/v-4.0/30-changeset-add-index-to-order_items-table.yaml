@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id:  add-index-to-order_items-table
+    author:  Vadzim.Nekhviadovich
+    changes:
+        - createIndex:
+            tableName:  order_items
+            columns:
+                - column:
+                    name:  order_id
+        - createIndex:
+            tableName:  order_items
+            columns:
+                - column:
+                    name:  product_id

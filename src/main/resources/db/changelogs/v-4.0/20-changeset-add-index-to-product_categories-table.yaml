@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id:  add-index-to-product_categories-table
+    author:  Vadzim.Nekhviadovich
+    changes:
+        - createIndex:
+            tableName:  product_categories
+            columns:
+                - column:
+                    name:  prod_id
+        - createIndex:
+            tableName:  product_categories
+            columns:
+                - column:
+                    name:  cat_id

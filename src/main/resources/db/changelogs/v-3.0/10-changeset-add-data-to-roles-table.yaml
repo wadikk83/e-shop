@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-data-to-roles-table
+      author: Vadzim.Nekhviadovich
+      loadUpdateData:
+        relativeToChangelogFile: false
+        encoding: UTF-8
+        file: db/changelogs/data/roles.csv
+        onlyUpdate: false
+        primaryKey: id
+        quotchar: "'"
+        separator: ","
+        tableName: roles
