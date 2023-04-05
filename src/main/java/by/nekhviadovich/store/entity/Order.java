@@ -25,10 +25,10 @@ public class Order extends BaseEntity {
     @OneToMany(mappedBy = "order",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    private List<CartItem> cartItems;
+    private List<ProductItem> productItems;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;*/
+    private User user;
 
 }

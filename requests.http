@@ -1,0 +1,18 @@
+### Получить первую страницу из 3 элементов c сортировкой по id
+GET http://localhost:8080/api/users?offset=0&limit=10&sort=ID_ASC
+Content-Type: application/json
+
+### Создать нового пользователя
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+{
+    "username":"user",
+    "password":"admin",
+    "firstName":"111",
+    "lastName":"111",
+    "email":"111@tut.by"
+}
+
+### Получить пользователя по id
+GET http://localhost:8080/api/users/1
+Content-Type: application/json

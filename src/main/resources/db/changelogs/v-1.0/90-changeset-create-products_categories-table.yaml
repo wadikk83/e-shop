@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-products_categories-table
+      author: Vadzim.Nekhviadovich
+      changes:
+        - createTable:
+            tableName: products_categories
+            columns:
+              - column:
+                  name: prod_id
+                  type: bigint
+              - column:
+                  name: cat_id
+                  type: bigint
+              - addPrimaryKey:
+                  columnNames: prod_id,cat_id
+                  tableName: products_categories

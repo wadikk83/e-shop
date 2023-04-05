@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: product_item-to-orders-and-products-and-shopping_card
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: order_id
+            baseTableName: product_items
+            constraintName:  fk_product-items_on_order
+            onDelete:  CASCADE
+            referencedColumnNames:  id
+            referencedTableName:  orders
+            
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: product_items
+            constraintName:  fk_product-items_on_product
+            onDelete:  CASCADE
+            referencedColumnNames:  id
+            referencedTableName:  products
+
+        - addForeignKeyConstraint:
+              baseColumnNames: shopping_card_id
+              baseTableName: product_items
+              constraintName: fk_product-items_on_shopping_card
+              onDelete: CASCADE
+              referencedColumnNames: id
+              referencedTableName: shopping_cart

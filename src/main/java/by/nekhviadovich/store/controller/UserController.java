@@ -1,13 +1,25 @@
 package by.nekhviadovich.store.controller;
 
 
+import by.nekhviadovich.store.dto.UserDTO;
+import by.nekhviadovich.store.entity.sort.UserSort;
 import by.nekhviadovich.store.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "api/users", produces = MediaType.APPLICATION_JSON_VALUE)
+@Tag(name = "User controller", description = "User controller CRUD operations")
+@SecurityRequirement(name = "JWT")
 public class UserController {
 
     private final UserService service;
@@ -16,42 +28,36 @@ public class UserController {
         this.service = service;
     }
 
-    /*@PostMapping()
-    @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Add new user",
-            description = "Allows you to create a new user")
-    public UserDTO create(@RequestBody @Valid UserDTO dto) {
-        return service.save(dto);
-    }*/
 
-    /*@GetMapping()
+    @RolesAllowed("ROLE_ADMIN")
+    @GetMapping()
     @Operation(summary = "Getting list all users",
             description = "Allows you to get list all users")
-    public Page<UserDto> getAll(@RequestParam(value = "offset", defaultValue = "0") @Min(0) Integer offset,
-                                @RequestParam(value = "limit", defaultValue = "20") @Min(1) @Max(100) Integer limit) {
-        return service.findAll(PageRequest.of(offset, limit));
-    }*/
+    public Page<UserDTO> getAll(@RequestParam(value = "offset", defaultValue = "0") @Min(0) Integer offset,
+                                @RequestParam(value = "limit", defaultValue = "20") @Min(1) @Max(100) Integer limit,
+                                @RequestParam(value = "sort") UserSort sort) {
+        return service.findAll(PageRequest.of(offset, limit, sort.getSortValue()));
+    }
 
-  /*  @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}")
     @Operation(summary = "Getting user by ID",
             description = "Allows you to getting user by ID")
-    public UserDto getById(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id) {
+    public UserDTO getById(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id) {
         return service.findById(id);
     }
 
     @PutMapping(value = "/{id}")
     @Operation(summary = "Updating user by ID",
             description = "Allows you to update user by ID")
-    public UserDto update(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id,
-                          @RequestBody @Valid UserDto entity) {
-        entity.setId(id);
-        return service.update(entity);
+    public UserDTO update(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id,
+                          @RequestBody @Valid UserDTO dto) {
+        return service.update(id, dto);
     }
 
     @DeleteMapping(value = "/{id}")
     @Operation(summary = "Deleting user",
             description = "Allows you to delete user by ID")
-    public void deleteById(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id) {
-        service.deleteById(id);
-    }*/
+    public Boolean deleteById(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id) {
+        return service.deleteById(id);
+    }
 }

@@ -5,6 +5,7 @@ import by.nekhviadovich.store.entity.Role;
 import by.nekhviadovich.store.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.HashSet;
@@ -13,16 +14,18 @@ import java.util.Set;
 import static java.util.stream.Collectors.toSet;
 
 @Mapper(componentModel = "spring")
-public abstract class UserMapper {
+public interface UserMapper {
 
     @Mapping(source = "authorities", target = "authorities", qualifiedByName = "stringToRole")
-    public abstract User toEntity(UserDTO userDTO);
+    User toEntity(UserDTO userDTO);
 
-    @Mapping(source = "authorities", target = "authorities", qualifiedByName = "roleToString")
-    public abstract UserDTO toDto(User user);
+    @Mappings(value = {
+            @Mapping(source = "authorities", target = "authorities", qualifiedByName = "roleToString"),
+            @Mapping(source = "password", target = "password", ignore = true)})
+    UserDTO toDto(User user);
 
     @Named("stringToRole")
-    protected Set<Role> stringToRole(Set<String> authorities) {
+    default Set<Role> stringToRole(Set<String> authorities) {
         if (authorities != null) {
             return authorities.stream()
                     .map(Role::new)
@@ -32,7 +35,7 @@ public abstract class UserMapper {
     }
 
     @Named("roleToString")
-    protected Set<String> roleToString(Set<Role> authorities) {
+    default Set<String> roleToString(Set<Role> authorities) {
         if (authorities != null) {
             return authorities.stream()
                     .map(Object::toString)

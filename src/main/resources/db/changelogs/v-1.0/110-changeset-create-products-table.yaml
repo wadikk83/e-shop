@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-products-table
+      author: Vadzim.Nekhviadovich
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: stock
+                  type: int
+              - column:
+                  name: price
+                  type: double
+              - column:
+                  name: picture
+                  type: varchar(255)
+              - column:
+                  name: brand_id
+                  type: bigint

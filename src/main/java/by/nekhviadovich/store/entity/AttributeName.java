@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "attribute_names")
 public class AttributeName extends BaseEntity {
 
     @Column(unique = true)

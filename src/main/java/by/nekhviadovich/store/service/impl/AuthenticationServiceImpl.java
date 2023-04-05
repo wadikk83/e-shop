@@ -7,14 +7,12 @@ import by.nekhviadovich.store.entity.ETokenType;
 import by.nekhviadovich.store.entity.Token;
 import by.nekhviadovich.store.entity.User;
 import by.nekhviadovich.store.repository.TokenRepository;
-import by.nekhviadovich.store.repository.UserRepository;
 import by.nekhviadovich.store.service.AuthenticationService;
 import by.nekhviadovich.store.service.JwtService;
 import by.nekhviadovich.store.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,13 +23,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final UserService userService;
 
-    private final UserRepository userRepository;
-
     private final JwtService jwtService;
 
     private final TokenRepository tokenRepository;
-
-    private final PasswordEncoder passwordEncoder;
 
     @Override
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
@@ -39,8 +33,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()
-                )
-        );
+                ));
         final User user = (User) userService.loadUserByUsername(request.getUsername());
 
         final String jwtToken = jwtService.generateToken(user);

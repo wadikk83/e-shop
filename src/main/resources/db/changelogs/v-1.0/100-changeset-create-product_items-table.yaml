@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-product_items-table
+      author: Vadzim.Nekhviadovich
+      changes:
+        - createTable:
+            tableName: product_items
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: qty
+                  type: int
+              - column:
+                  name: product_id
+                  type: bigint
+              - column:
+                  name: order_id
+                  type: bigint
+              - column:
+                  name: shopping_card_id
+                  type: bigint

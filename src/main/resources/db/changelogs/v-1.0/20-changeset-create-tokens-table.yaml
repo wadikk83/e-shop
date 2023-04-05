@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tokens-table
+      author: Vadzim.Nekhviadovich
+      changes:
+        - createTable:
+            tableName: tokens
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    name: pk_tokens
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: token
+                  type: varchar(255)
+              - column:
+                  name: token_type
+                  type: varchar(255)
+              - column:
+                  name: revoked
+                  type: boolean
+              - column:
+                  name: expired
+                  type: boolean
+              - column:
+                  name: user_id
+                  type: bigint

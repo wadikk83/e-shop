@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-shopping-card-table
+      author: Vadzim.Nekhviadovich
+      changes:
+        - createTable:
+            tableName: shopping_cart
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    name: pk_shoppingcart
+                    primaryKey: true
+                    nullable: false

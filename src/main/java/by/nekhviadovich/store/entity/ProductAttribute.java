@@ -3,6 +3,7 @@ package by.nekhviadovich.store.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "product_attributes")
 public class ProductAttribute extends BaseEntity {
 
     @ManyToOne()
@@ -22,5 +24,5 @@ public class ProductAttribute extends BaseEntity {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    private String value;
+    private String val;
 }

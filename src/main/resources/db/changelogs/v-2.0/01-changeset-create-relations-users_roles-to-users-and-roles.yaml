@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-user_roles-to-users-and-roles
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: users_roles
+            constraintName:  fk_user-roles_users
+            referencedColumnNames:  id
+            referencedTableName:  users
+
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: users_roles
+            constraintName:  fk_user-roles_roles
+            referencedColumnNames:  id
+            referencedTableName:  roles

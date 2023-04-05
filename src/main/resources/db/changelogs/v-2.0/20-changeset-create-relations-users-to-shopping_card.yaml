@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-users-to-shopping_card
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: shopping_card_id
+            baseTableName: users
+            constraintName: fk_users_on_shopping_card
+            referencedColumnNames: id
+            referencedTableName: shopping_cart

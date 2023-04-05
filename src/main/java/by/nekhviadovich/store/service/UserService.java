@@ -6,15 +6,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.Optional;
-
 public interface UserService extends UserDetailsService {
 
-    Optional<UserDTO> findByUsername(String username);
+    UserDTO findByUsername(String username);
 
-    User create(UserDTO userDTO);
-
-    Optional<UserDTO> findByEmail(String email);
+    User create(UserDTO dto);
 
     Page<UserDTO> findAll(Pageable pageable);
+
+    UserDTO findById(Long id);
+
+    UserDTO update(Long id, UserDTO dto);
+
+    Boolean deleteById(Long id);
 }

@@ -1,25 +1,31 @@
 databaseChangeLog:
-  #- include:
-  #    file: 01-changeset-create-relations-categories-to-categories.yaml
-  #    relativeToChangelogFile: true
-  #- include:
-  #    file: 10-changeset-create-relations-product_attributes-to-products.yaml
-  #    relativeToChangelogFile: true
-  #- include:
-  #    file: 20-changeset-create-relations-product_attributes-to-attribute_names.yaml
-  #    relativeToChangelogFile: true
-  # - include:
-  #        file: 30-changeset-create-relations-categories-to-products.yaml
-  #        relativeToChangelogFile: true
-  #- include:
-  #    file: 40-changeset-create-relations-users-to-email.yaml
-  #    relativeToChangelogFile: true
-  #- include:
-  #    file: 50-changeset-create-relations-orders-to-users.yaml
-  #    relativeToChangelogFile: true
-  #- include:
-  #    file: 60-changeset-create-relations-order_items-to-orders-and-products.yaml
-  #    relativeToChangelogFile: true
   - include:
-      file: 80-changeset-create-relations-users_roles-to-users-and-roles.yaml
+      file: 01-changeset-create-relations-users_roles-to-users-and-roles.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 10-changeset-create-relations-tokens-to-users.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 20-changeset-create-relations-users-to-shopping_card.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 30-changeset-create-relations-product_attributes-to-products.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 40-changeset-create-relations-product_attributes-to-attribute_names.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 50-changeset-create-relations-categories-to-categories.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 60-changeset-create-relations-products_categories-to-categories-and-products.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 70-changeset-create-relations-orders-to-users.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 80-changeset-create-relations-product_item-to-orders-and-products-and-shopping_card.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 90-changeset-create-relations-products-to-brands.yaml
       relativeToChangelogFile: true

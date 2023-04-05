@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-product_attributes-to-products
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: product_attributes
+            constraintName:  fk_product_attributes_on_product
+            referencedColumnNames:  id
+            referencedTableName:  products

@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "products")
 public class Product extends BaseEntity {
 
     @NonNull
@@ -29,7 +30,7 @@ public class Product extends BaseEntity {
     private Brand brand;
 
     @ManyToMany
-    @JoinTable(name = "product_category",
+    @JoinTable(name = "products_categories",
             joinColumns = @JoinColumn(name = "prod_id"),
             inverseJoinColumns = @JoinColumn(name = "cat_id"))
     private List<Category> categories = new ArrayList<>();
@@ -39,5 +40,11 @@ public class Product extends BaseEntity {
             fetch = FetchType.LAZY,
             orphanRemoval = true)
     private List<ProductAttribute> productAttributes;
+
+    @OneToMany(mappedBy = "product",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    private List<ProductItem> productItems;
 
 }

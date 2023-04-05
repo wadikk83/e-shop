@@ -4,6 +4,8 @@ import by.nekhviadovich.store.dto.UserDTO;
 import by.nekhviadovich.store.entity.ERole;
 import by.nekhviadovich.store.entity.Role;
 import by.nekhviadovich.store.entity.User;
+import by.nekhviadovich.store.exception.EntityErrorType;
+import by.nekhviadovich.store.exception.EntityException;
 import by.nekhviadovich.store.mapper.UserMapper;
 import by.nekhviadovich.store.repository.RoleRepository;
 import by.nekhviadovich.store.repository.UserRepository;
@@ -17,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import static java.lang.String.format;
@@ -53,8 +54,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDTO> findByUsername(String username) {
-        return Optional.empty();
+    public UserDTO findByUsername(String username) {
+        return userMapper.toDto(loadUserByUsername(username));
     }
 
     @Override
@@ -78,16 +79,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDTO> findByEmail(String email) {
-        return Optional.empty();
-    }
-
-    @Override
     public Page<UserDTO> findAll(Pageable pageable) {
         return userRepository
                 .findAll(pageable)
                 .map(userMapper::toDto);
     }
 
+    @Override
+    public UserDTO findById(Long id) {
+        final User userFindById = userRepository
+                .findById(id)
+                .orElseThrow(() -> new EntityException(format(EntityErrorType.ENTITY_NOT_FOUND, id)));
+        return userMapper.toDto(userFindById);
+    }
+
+    @Override
+    public UserDTO update(Long id, UserDTO dto) {
+        if (userRepository.findById(id).isPresent()) {
+            dto.setId(id);
+            User entityToSave = userMapper.toEntity(dto);
+            return userMapper.toDto(userRepository.save(entityToSave));
+        } else {
+            throw new EntityException(String.format(EntityErrorType.ENTITY_NOT_UPDATED, id));
+        }
+    }
+
+    @Override
+    public Boolean deleteById(Long id) {
+        findById(id);
+        userRepository.deleteById(id);
+        return userRepository.findById(id).isEmpty();
+    }
 }
 

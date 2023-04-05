@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: products-to-brands
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: brand_id
+            baseTableName: products
+            constraintName: fk_products_on_brand
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: brands

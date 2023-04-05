@@ -38,21 +38,24 @@ public class User extends BaseEntity implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
 
-    @ManyToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
-    @JoinTable(name="USERS_ROLES",
-            joinColumns = {@JoinColumn (name="USER_ID", referencedColumnName="id")},
-            inverseJoinColumns = {@JoinColumn(name="ROLE_ID", referencedColumnName="id")}
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "USERS_ROLES",
+            joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "id")}
     )
     private Set<Role> authorities = new HashSet<>();
 
-    /*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
     @JoinColumn(name = "shopping_card_id", referencedColumnName = "id")
-    private ShoppingCart shoppingCart;*/
+    private ShoppingCart shoppingCart;
 
-    /*@OneToMany(mappedBy = "user",
+    @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    private List<Order> orders;*/
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    private List<Order> orders;
 
 
     @Override

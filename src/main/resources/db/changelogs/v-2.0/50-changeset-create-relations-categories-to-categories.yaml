@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-categories-to-categories
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: parent_id
+            baseTableName: categories
+            constraintName:  fk_categories_on_parent
+            onDelete:  SET NULL
+            referencedColumnNames:  id
+            referencedTableName:  categories
+
+
+
+

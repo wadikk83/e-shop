@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-relations-tokens-to-users
+      author: Vadzim.Nekhviadovich
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: tokens
+            constraintName:  fk_tokens_on_user
+            referencedColumnNames:  id
+            referencedTableName:  users

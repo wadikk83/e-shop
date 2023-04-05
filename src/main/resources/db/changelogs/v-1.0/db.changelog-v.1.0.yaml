@@ -5,30 +5,36 @@ databaseChangeLog:
   - include:
       file: 10-changeset-create-roles-table.yaml
       relativeToChangelogFile: true
-      #  - include:
-      #      file: 20-changeset-create-roles-table.yaml
-      #relativeToChangelogFile: true
-      #- include:
-      #    file: 30-changeset-create-categories-table.yaml
-      #   relativeToChangelogFile: true
-      # - include:
-      #   file: 40-changeset-create-product_attributes-table.yaml
-      #  relativeToChangelogFile: true
-      # - include:
-      #    file: 50-changeset-create-attribute_names-table.yaml
-      #   relativeToChangelogFile: true
-      # - include:
-      #    file: 60-changeset-create-products-table.yaml
-      #   relativeToChangelogFile: true
-      # - include:
-      #   file: 70-changeset-create-product_categories-table.yaml
-      #   relativeToChangelogFile: true
-      # - include:
-      #   file: 80-changeset-create-orders-table.yaml
-      #  relativeToChangelogFile: true
-      #- include:
-      #   file: 90-changeset-create-order_items-table.yaml
-      #  relativeToChangelogFile: true
   - include:
-      file: 110-changeset-create-user_roles-table.yaml
+      file: 20-changeset-create-tokens-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 30-changeset-create-users_roles-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 40-changeset-create-shopping-card-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 50-changeset-create-attribute_names-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 60-changeset-create-product_attributes-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 70-changeset-create-brands-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 80-changeset-create-categories-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 90-changeset-create-products_categories-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 100-changeset-create-product_items-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 110-changeset-create-products-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 120-changeset-create-orders-table.yaml
       relativeToChangelogFile: true
