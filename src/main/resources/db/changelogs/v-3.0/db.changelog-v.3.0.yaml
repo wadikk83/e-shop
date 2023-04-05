@@ -9,17 +9,21 @@ databaseChangeLog:
   - include:
       file: 20-changeset-add-data-to-users_roles-table.yaml
       relativeToChangelogFile: true
-  #- include:
-  #    file: 40-changeset-add-data-to-categories-table.yaml
-  #    relativeToChangelogFile: true
-  #- include:
-  #    file: 50-changeset-add-data-to-product-table.yaml
-  #    relativeToChangelogFile: true
+  - include:
+      file: 30-changeset-add-data-to-brands-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 40-changeset-add-data-to-categories-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 50-changeset-add-data-to-attribute_names-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 60-changeset-add-data-to-products-table.yaml
+      relativeToChangelogFile: true
+
   #- include:
   #    file: 60-changeset-add-data-to-product_categories-table.yaml
-  #    relativeToChangelogFile: true
-  #- include:
-  #    file: 70-changeset-add-data-to-attribute_names-table.yaml
   #    relativeToChangelogFile: true
   #- include:
   #    file: 80-changeset-add-data-to-product_attributes-table.yaml

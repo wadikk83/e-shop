@@ -1,12 +1,11 @@
 package by.nekhviadovich.store.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
-
-import java.util.Set;
 
 
 @Getter
@@ -16,18 +15,13 @@ import java.util.Set;
 @Table(name = "roles")
 public class Role extends BaseEntity implements GrantedAuthority {
 
-    @Enumerated(EnumType.STRING)
-    private ERole name;
+    public static final String ADMIN = "ADMIN";
+    public static final String MANAGER = "MANAGER";
+    public static final String USER = "USER";
 
-    @ManyToMany(mappedBy = "authorities")
-    private Set<User> users;
+    private String authority;
 
-    public Role(String name) {
-        this.name = ERole.valueOf(name);
-    }
-
-    @Override
-    public String getAuthority() {
-        return name.toString();
+    public Role(String authority) {
+        this.authority = authority;
     }
 }

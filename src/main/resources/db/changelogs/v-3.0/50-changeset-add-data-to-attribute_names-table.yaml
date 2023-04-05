@@ -3,9 +3,9 @@ databaseChangeLog:
       id: add-data-to-attribute_names-table
       author: Vadzim.Nekhviadovich
       loadUpdateData:
-        relativeToChangelogFile: true
+        relativeToChangelogFile: false
         encoding: UTF-8
-        file: ../data/attribute_names.csv
+        file: db/changelogs/data/attribute_names.csv
         onlyUpdate: false
         primaryKey: id
 

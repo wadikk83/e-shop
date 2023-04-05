@@ -3,9 +3,9 @@ databaseChangeLog:
       id: add-data-to-products-table
       author: Vadzim.Nekhviadovich
       loadUpdateData:
-        relativeToChangelogFile: true
+        relativeToChangelogFile: false
         encoding: UTF-8
-        file: ../data/products.csv
+        file: db/changelogs/data/products.csv
         onlyUpdate: false
         primaryKey: id
         quotchar: "'"

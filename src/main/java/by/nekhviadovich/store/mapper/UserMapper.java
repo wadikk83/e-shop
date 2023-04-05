@@ -38,7 +38,7 @@ public interface UserMapper {
     default Set<String> roleToString(Set<Role> authorities) {
         if (authorities != null) {
             return authorities.stream()
-                    .map(Object::toString)
+                    .map(Role::getAuthority)
                     .collect(toSet());
         }
         return new HashSet<>();

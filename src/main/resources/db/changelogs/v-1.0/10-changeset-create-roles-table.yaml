@@ -14,5 +14,5 @@ databaseChangeLog:
                               primaryKey: true
                               nullable: false
                     - column:
-                          name: name
+                          name: authority
                           type: varchar(255)

@@ -2,6 +2,7 @@ package by.nekhviadovich.store.controller;
 
 
 import by.nekhviadovich.store.dto.UserDTO;
+import by.nekhviadovich.store.entity.Role;
 import by.nekhviadovich.store.entity.sort.UserSort;
 import by.nekhviadovich.store.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,7 +30,7 @@ public class UserController {
     }
 
 
-    @RolesAllowed("ROLE_ADMIN")
+    @RolesAllowed(Role.ADMIN)
     @GetMapping()
     @Operation(summary = "Getting list all users",
             description = "Allows you to get list all users")
@@ -39,6 +40,7 @@ public class UserController {
         return service.findAll(PageRequest.of(offset, limit, sort.getSortValue()));
     }
 
+    @RolesAllowed(Role.USER)
     @GetMapping(value = "/{id}")
     @Operation(summary = "Getting user by ID",
             description = "Allows you to getting user by ID")

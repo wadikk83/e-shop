@@ -1,7 +1,6 @@
 package by.nekhviadovich.store.service.impl;
 
 import by.nekhviadovich.store.dto.UserDTO;
-import by.nekhviadovich.store.entity.ERole;
 import by.nekhviadovich.store.entity.Role;
 import by.nekhviadovich.store.entity.User;
 import by.nekhviadovich.store.exception.EntityErrorType;
@@ -72,7 +71,7 @@ public class UserServiceImpl implements UserService {
         }
 
         User user = userMapper.toEntity(userDTO);
-        final Role userRole = roleRepository.findByName(ERole.ROLE_USER);
+        final Role userRole = roleRepository.findByAuthority(Role.USER);
         user.setAuthorities(new HashSet<>(Set.of(userRole)));
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         return userRepository.save(user);

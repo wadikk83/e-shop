@@ -1,13 +1,13 @@
 databaseChangeLog:
   - changeSet:
-      id: add-data-to-categories-table
+      id: add-data-to-brands-table
       author: Vadzim.Nekhviadovich
       loadUpdateData:
         relativeToChangelogFile: false
         encoding: UTF-8
-        file: db/changelogs/data/categories.csv
+        file: db/changelogs/data/brands.csv
         onlyUpdate: false
         primaryKey: id
         quotchar: "'"
         separator: ","
-        tableName: categories
+        tableName: brands

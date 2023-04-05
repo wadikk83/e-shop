@@ -16,28 +16,28 @@ import static org.springframework.http.HttpStatus.*;
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntityException.class)
-    public ResponseEntity<Object> handleEntityException(HttpServletRequest request, EntityException ex) {
+    public ResponseEntity<ApiError> handleEntityException(HttpServletRequest request, EntityException ex) {
         ApiError apiError = new ApiError("EntityException " + request.getRequestURI(), ex.getMessage());
         logger.error("EntityException " + request.getRequestURI() + ex.getMessage());
         return ResponseEntity.status(NOT_FOUND).body(apiError);
     }
 
     @ExceptionHandler(ValidationException.class)
-    public ResponseEntity<Object> handleValidationException(HttpServletRequest request, ValidationException ex) {
+    public ResponseEntity<ApiError> handleValidationException(HttpServletRequest request, ValidationException ex) {
         ApiError apiError = new ApiError("ValidationException " + request.getRequestURI(), ex.getMessage());
         logger.error("ValidationException " + request.getRequestURI() + ex.getMessage());
         return ResponseEntity.status(BAD_REQUEST).body(apiError);
     }
 
     @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<Object> handleAuthorizationException(HttpServletRequest request, AuthenticationException ex) {
+    public ResponseEntity<ApiError> handleAuthorizationException(HttpServletRequest request, AuthenticationException ex) {
         ApiError apiError = new ApiError("AuthorizationException " + request.getRequestURI(), ex.getMessage());
         logger.error("AuthorizationException " + request.getRequestURI() + ex.getMessage());
         return ResponseEntity.status(UNAUTHORIZED).body(apiError);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> handleInternalServerError(HttpServletRequest request, Exception ex) {
+    public ResponseEntity<ApiError> handleInternalServerError(HttpServletRequest request, Exception ex) {
         ApiError apiError = new ApiError("InternalException " + request.getRequestURI(), ex.getMessage());
         logger.error("InternalException " + request.getRequestURI() + ex.getMessage());
         return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(apiError);
