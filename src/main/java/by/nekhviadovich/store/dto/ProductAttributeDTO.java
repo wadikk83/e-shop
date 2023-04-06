@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ProductAttributeDTO extends AbstractDTO {
 
-    private AttributeNameDTO attributeNameDTO;
+    private AttributeNameDTO attributeName;
 
-    private String value;
+    private String val;
 }

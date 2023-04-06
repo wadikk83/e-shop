@@ -10,6 +10,7 @@ import by.nekhviadovich.store.repository.TokenRepository;
 import by.nekhviadovich.store.service.AuthenticationService;
 import by.nekhviadovich.store.service.JwtService;
 import by.nekhviadovich.store.service.UserService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final AuthenticationManager authenticationManager;

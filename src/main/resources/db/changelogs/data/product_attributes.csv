@@ -1,6 +1,5 @@
-product_id,attribute_name_id
-1,1
-1,2
-2,2
-3,2
-3,3
+attribute_name_id,product_id,val
+2,1,505.00
+4,1,10
+2,2,506.00
+4,3,12

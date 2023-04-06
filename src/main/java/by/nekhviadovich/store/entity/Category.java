@@ -1,6 +1,5 @@
 package by.nekhviadovich.store.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -28,6 +27,5 @@ public class Category extends BaseEntity {
 
     //список дочерних категорий
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Category> childList;
 }

@@ -35,7 +35,9 @@ public class User extends BaseEntity implements UserDetails {
 
     private boolean enabled = true;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
     private List<Token> tokens;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

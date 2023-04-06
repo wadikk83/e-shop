@@ -9,6 +9,21 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@NamedEntityGraphs({
+        @NamedEntityGraph(
+                name = "productAttributes-graph",
+                attributeNodes = {
+                        @NamedAttributeNode(value = "productAttributes")
+                }
+        ),
+        @NamedEntityGraph(
+                name = "productItems-graph",
+                attributeNodes = {
+                        @NamedAttributeNode(value = "productItems")
+                }
+        )
+})
 @Getter
 @Setter
 @NoArgsConstructor

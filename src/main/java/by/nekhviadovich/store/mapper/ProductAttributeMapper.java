@@ -5,7 +5,7 @@ import by.nekhviadovich.store.dto.ProductAttributeDTO;
 import by.nekhviadovich.store.entity.ProductAttribute;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {AttributeNameMapper.class})
 public interface ProductAttributeMapper {
 
     ProductAttributeDTO toDto(ProductAttribute productAttribute);

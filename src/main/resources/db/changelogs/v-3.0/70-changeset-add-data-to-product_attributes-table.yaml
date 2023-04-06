@@ -3,11 +3,11 @@ databaseChangeLog:
       id: add-data-to-product_attributes-table
       author: Vadzim.Nekhviadovich
       loadUpdateData:
-        relativeToChangelogFile: true
+        relativeToChangelogFile: false
         encoding: UTF-8
-        file: ../data/product_attributes.csv
+        file: db/changelogs/data/product_attributes.csv
         onlyUpdate: false
-        primaryKey: product_id,attribute_name_id
+        primaryKey: id
         quotchar: "'"
         separator: ","
         tableName: product_attributes

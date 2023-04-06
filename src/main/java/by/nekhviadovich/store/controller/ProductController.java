@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.*;
 @SecurityRequirement(name = "JWT")
 public class ProductController {
 
-    private final ProductService productService;
+    private final ProductService service;
 
     public ProductController(ProductService productService) {
-        this.productService = productService;
+        this.service = productService;
     }
 
     @GetMapping()
@@ -32,21 +32,30 @@ public class ProductController {
     public Page<ProductDTO> getAll(@RequestParam(value = "offset", defaultValue = "0") @Min(0) Integer offset,
                                    @RequestParam(value = "limit", defaultValue = "20") @Min(1) @Max(100) Integer limit,
                                    @RequestParam(value = "sort") UserSort sort) {
-        return productService.findAll(PageRequest.of(offset, limit, sort.getSortValue()));
+        return service.findAll(PageRequest.of(offset, limit, sort.getSortValue()));
+    }
+
+    @GetMapping("/all")
+    @Operation(summary = "Getting list all products",
+            description = "Allows you to get list all products")
+    public Page<ProductDTO> getAllWithLazy(@RequestParam(value = "offset", defaultValue = "0") @Min(0) Integer offset,
+                                   @RequestParam(value = "limit", defaultValue = "20") @Min(1) @Max(100) Integer limit,
+                                   @RequestParam(value = "sort") UserSort sort) {
+        return service.findAllWithLazy(PageRequest.of(offset, limit, sort.getSortValue()));
     }
 
     @PostMapping()
     @Operation(summary = "Create new product",
             description = "Allows you to create new product")
     public ProductDTO create(@RequestBody @Valid ProductDTO dto) {
-        return productService.create(dto);
+        return service.create(dto);
     }
 
     @GetMapping(value = "/{id}")
     @Operation(summary = "Getting product by ID",
             description = "Allows you to getting product by ID")
     public ProductDTO getById(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id) {
-        return productService.findById(id);
+        return service.findById(id);
     }
 
     @PutMapping(value = "/{id}")
@@ -54,13 +63,13 @@ public class ProductController {
             description = "Allows you to update product by ID")
     public ProductDTO update(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id,
                              @RequestBody @Valid ProductDTO dto) {
-        return productService.update(id, dto);
+        return service.update(id, dto);
     }
 
     @DeleteMapping(value = "/{id}")
     @Operation(summary = "Deleting product",
             description = "Allows you to delete product by ID")
     public Boolean deleteById(@PathVariable(name = "id") @Min(1) @Max(Long.MAX_VALUE) Long id) {
-        return productService.deleteById(id);
+        return service.deleteById(id);
     }
 }

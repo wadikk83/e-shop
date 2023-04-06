@@ -1,12 +1,12 @@
 package by.nekhviadovich.store.dto;
 
-import by.nekhviadovich.store.entity.ERole;
+import lombok.Data;
 
+@Data
 public class RoleDTO {
 
     private long id;
 
-    private ERole name;
+    private String authority;
 
-    private String description;
 }

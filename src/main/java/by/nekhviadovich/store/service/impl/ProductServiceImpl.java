@@ -7,6 +7,7 @@ import by.nekhviadovich.store.exception.EntityException;
 import by.nekhviadovich.store.mapper.ProductMapper;
 import by.nekhviadovich.store.repository.ProductRepository;
 import by.nekhviadovich.store.service.ProductService;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import static java.lang.String.format;
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
@@ -63,5 +65,12 @@ public class ProductServiceImpl implements ProductService {
         findById(id);
         productRepository.deleteById(id);
         return productRepository.findById(id).isEmpty();
+    }
+
+    @Override
+    public Page<ProductDTO> findAllWithLazy(Pageable pageable) {
+        return productRepository
+                .findAllFetchProductAttributes(pageable)
+                .map(productMapper::toDtoShort);
     }
 }

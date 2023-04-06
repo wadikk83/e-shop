@@ -1,13 +1,13 @@
 databaseChangeLog:
   - changeSet:
-      id: add-data-to-product_categories-table
+      id: add-data-to-products_categories-table
       author: Vadzim.Nekhviadovich
       loadUpdateData:
-        relativeToChangelogFile: true
+        relativeToChangelogFile: false
         encoding: UTF-8
-        file: ../data/product_categories.csv
+        file: db/changelogs/data/product_categories.csv
         onlyUpdate: false
         primaryKey: prod_id,cat_id
         quotchar: "'"
         separator: ","
-        tableName: product_categories
+        tableName: products_categories

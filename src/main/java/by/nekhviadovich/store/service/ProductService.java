@@ -16,4 +16,6 @@ public interface ProductService {
 
     Boolean deleteById(Long id);
 
+    Page<ProductDTO> findAllWithLazy(Pageable pageable);
+
 }
